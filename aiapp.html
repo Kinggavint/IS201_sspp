@@ -1,0 +1,135 @@
+<!-- aiapp.html - Pickleball Riddle Generator -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pickleball Riddle Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff9e6;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #004b8d;
+    }
+
+    #riddle-box {
+      border: 2px solid #004b8d;
+      padding: 20px;
+      margin: 20px auto;
+      width: 60%;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 75, 141, 0.2);
+    }
+
+    button {
+      background-color: #004b8d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #003366;
+    }
+
+    #riddle-answer {
+      font-weight: bold;
+      color: #006400;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+      margin-top: 15px;
+    }
+
+    #riddle-answer.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏓 Pickleball Riddle Generator</h1>
+  <p>Think you're a pickleball pro? Try these riddles and test your skills!</p>
+
+  <div id="riddle-box">
+    <h2 id="riddle-question">Click the button below!</h2>
+    <p id="riddle-answer"></p>
+  </div>
+
+  <button onclick="generateRiddle()">New Riddle</button>
+  <button onclick="showAnswer()">Show Answer</button>
+
+  <script>
+    const riddles = [
+  {
+    question: "Why are pickleball players such bad cooks?",
+    answer: "Because they always stay out of the kitchen!"
+  },
+  {
+    question: "What bounces, flies, and always finds the net — but never surfs the web?",
+    answer: "A pickleball serve."
+  },
+  {
+    question: "What do you call a group of loud pickleball players?",
+    answer: "A paddle of chatter!"
+  },
+  {
+    question: "What part of the court is off-limits for volleys but full of spicy drama?",
+    answer: "The kitchen."
+  },
+  {
+    question: "What do you get when you cross tennis with ping-pong and add a weird name?",
+    answer: "Pickleball!"
+  },
+  {
+    question: "Why did the pickleball paddle break up with the ball?",
+    answer: "Because it kept bouncing back!"
+  },
+  {
+    question: "What makes you sweat, shout, and smile — all in one match?",
+    answer: "A pickleball rally."
+  },
+  {
+    question: "Why did the beginner bring syrup to the court?",
+    answer: "They thought it was a pancake tournament!"
+  },
+  {
+    question: "What’s the most polite shot in pickleball?",
+    answer: "A gentle dink."
+  },
+  {
+    question: "Why was the pickleball player always calm under pressure?",
+    answer: "Because they had plenty of serves left!"
+  }
+];
+
+    let currentAnswer = '';
+
+    function generateRiddle() {
+      const random = Math.floor(Math.random() * riddles.length);
+      const riddle = riddles[random];
+
+      document.getElementById('riddle-question').textContent = riddle.question;
+      document.getElementById('riddle-answer').textContent = '';
+      document.getElementById('riddle-answer').classList.remove('visible');
+      currentAnswer = riddle.answer;
+    }
+
+    function showAnswer() {
+      const answerEl = document.getElementById('riddle-answer');
+      answerEl.textContent = currentAnswer;
+      answerEl.classList.add('visible');
+    }
+  </script>
+</body>
+</html>
